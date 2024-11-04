@@ -14,26 +14,44 @@
         <img src="./popcat1.png" id="popcat1">
     </div>
 
-    <!-- Javascript Section -->
+    <!-- Updated JavaScript Section -->
     <script>
-        window.onload = () =>{
+        window.onload = () => {
             let img = document.querySelector('#popcat1');
             let counter = document.querySelector('#target');
             let score = 0;
             let sound = new Audio('pop.mp3');
 
-            img.addEventListener('mousedown', ()=> {
-                img.src = 'popcat2.png';
-                sound.play();
-                addToCounter();
-            })
-            img.addEventListener('mouseup', ()=> {
-                img.src = 'popcat1.png';
-            })
-            function addToCounter(){
+            function addToCounter() {
                 score++;
                 counter.innerHTML = score;
             }
+
+            img.addEventListener('mousedown', () => {
+                img.src = 'popcat2.png';
+                sound.play();
+                addToCounter();
+            });
+            img.addEventListener('mouseup', () => {
+                img.src = 'popcat1.png';
+            });
+
+            // Adding touch support for mobile devices
+            img.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                img.src = 'popcat2.png';
+                sound.play();
+                addToCounter();
+            });
+            img.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                img.src = 'popcat1.png';
+            });
+        };
+    </script>
+</body>
+</html>
+
         }
     </script>
 </body>
